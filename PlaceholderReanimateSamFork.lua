@@ -276,6 +276,11 @@ local Patchma = library.newWindow({
 Patchma.addButton({
     Name = 'no anim',
     Function = function()
+        pcall(function()
+            for _,anim in humanoid.Animator:GetPlayingAnimationTracks() do
+                anim:Stop()
+            end
+        end)
         pcall(function() char.Animate:Destroy() end)
         pcall(function()
             while task.wait(0.1) do
