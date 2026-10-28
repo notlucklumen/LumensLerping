@@ -276,17 +276,16 @@ local Patchma = library.newWindow({
 Patchma.addButton({
     Name = 'no anim',
     Function = function()
-        pcall(function()
-            for _,anim in humanoid.Animator:GetPlayingAnimationTracks() do
+        task.spawn(function()
+while task.wait() do
+                            pcall(function()
+            for _, anim in game.Players.LocalPlayer.Character.Humanoid.Animator:GetPlayingAnimationTracks() do
                 anim:Stop()
             end
         end)
+                        end
+                    end)
         pcall(function() char.Animate:Destroy() end)
-        pcall(function()
-            while task.wait(0.1) do
-                humanoid.Animator:Destroy()
-            end
-        end)
         library.notify({
             Title = 'no anim',
             Description = 'stopped animations'
