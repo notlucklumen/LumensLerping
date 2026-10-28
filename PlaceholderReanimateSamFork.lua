@@ -184,8 +184,6 @@ local function buildExportTable(animName)
     return table.concat(lines, '\n')
 end
 
-(setclipboard or toclipboard or print)('https://discord.gg/weEQdy7vDV')
-
 for _, obj in next, character:GetDescendants() do
     if obj:IsA('Motor6D') then
         ind = ind + 1
